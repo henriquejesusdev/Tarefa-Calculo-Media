@@ -1,6 +1,7 @@
 /**
  * Classe que representa uma Calculadora de Média.
- * Esta classe armazena quatro notas de um aluno e calcula a média aritmética delas.
+ * Esta classe armazena quatro notas de um aluno, calcula a média aritmética delas
+ * e determina a situação do aluno com base na média.
  */
 public class CalculadoraMedia {
     private double nota1; // Primeira nota
@@ -24,12 +25,28 @@ public class CalculadoraMedia {
     }
 
     /**
-     * Retorna uma descrição das notas e da média calculada.
-     * @return String com as notas e a média
+     * Determina a situação do aluno com base na média.
+     * @return String indicando se o aluno está Aprovado, em Recuperação ou Reprovado
+     */
+    public String getSituacao() {
+        double media = calcularMedia();
+        if (media >= 7.0) {
+            return "Aprovado";
+        } else if (media >= 5.0) {
+            return "Recuperação";
+        } else {
+            return "Reprovado";
+        }
+    }
+
+    /**
+     * Retorna uma descrição das notas, da média calculada e da situação do aluno.
+     * @return String com as notas, a média e a situação
      */
     public String getDescricao() {
         return "Notas: " + nota1 + ", " + nota2 + ", " + nota3 + ", " + nota4 +
-               "\nMédia: " + calcularMedia();
+               "\nMédia: " + calcularMedia() +
+               "\nSituação: " + getSituacao();
     }
     
     public void setNotas(double nota1, double nota2, double nota3, double nota4) {
